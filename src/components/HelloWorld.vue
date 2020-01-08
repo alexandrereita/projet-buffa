@@ -35,6 +35,52 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+   data:() => {return {
+            page: 0,
+            count: 0,
+            nbResto:50,
+            restaurants: [
+                {
+                    name: 'café de Paris',
+                    cuisine: 'Française'
+                },
+                {
+                    name: 'Sun City Café',
+                    cuisine: 'Américaine'
+                }
+            ],
+            nomRecherche: '',
+            nbPageResultat: 0,
+            name: '',
+            cuisine: '',
+        }},
+  mounted(){
+    console.log("BEFORE HTML");
+    this.getRestaurantsFromServer();
+  },
+  created: () => {
+    console.log('heyy')
+  },
+  methods: {
+            getRestaurantsFromServer() {
+                let url = "http://localhost:8080/api/restaurants?page=" + this.page + "&pagesize="+ this.nbResto + "&name=" + this.nomRecherche;
+
+                fetch(url)
+                    .then(responseJSON => {
+                        return responseJSON.json()
+                        .then(res => {
+                            // Maintenant res est un vrai objet JavaScript
+                            this.restaurants = res.data;
+                            this.count = res.count;
+                            this.nbPageResultat = Math.floor(this.count / this.nbResto);
+                            console.log(this.restaurants);
+                        });
+                    })
+                    .catch(function (err) {
+                        console.log(err.msg);
+                });
+            },
   }
 }
 </script>
