@@ -122,8 +122,8 @@ app.get('/api/restaurants', function(req, res) {
 });
 
 // Récupération d'un seul restaurant par son id
-app.get('/api/restaurants/:id', function(req, res) {
-	var id = req.params.id;
+app.get('/api/restaurant', function(req, res) {
+	var id = req.query.id;
 
  	mongoDBModule.findRestaurantById(id, function(data) {
  		res.send(JSON.stringify(data)); 
