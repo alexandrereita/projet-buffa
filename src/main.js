@@ -5,6 +5,10 @@ import App from './App.vue'
 
 import RestaurantDetail from './components/RestaurantDetail'
 
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
+
 Vue.config.productionTip = false
 Vue.use(VueRouter)
 Vue.use(VueGoogleMaps, {

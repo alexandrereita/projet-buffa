@@ -1,10 +1,19 @@
 <template>
  <div>
-    <div>
-        <ul>
-            <restaurant-item v-for="resto in liste" v-bind:key="resto.id" :item="resto"/>
-        </ul>
-    </div>
+   <v-simple-table dense>
+    <template v-slot:default>
+      <thead>
+        <tr>
+          <th class="text-left">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="resto in liste" v-bind:key="resto.id">
+          <td><restaurant-item :item="resto"/></td>
+        </tr>
+      </tbody>
+    </template>
+  </v-simple-table>
   </div>
 </template>
 

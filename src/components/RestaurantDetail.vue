@@ -102,7 +102,7 @@ export default {
                             var logo = document.querySelector('#logo')
                             logo.setAttribute("data-before",res.restaurant.name)
 
-                            this.$refs.mapRef.panTo({lat: this.restaurant.address.coord[0],lng:this.restaurant.address.coord[1]})
+                            this.$refs.mapRef.panTo({lat: this.restaurant.address.coord[1],lng:this.restaurant.address.coord[0]})
                         });
                     })
                     .catch(function (err) {
